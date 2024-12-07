@@ -14,22 +14,91 @@ port = os.getenv('PORT',3000)
 
 @app.route('/')
 def index():
-    return '''    <html>
+    return '''    
+    <html lang="en">
         <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Dots loading animation</title>
             <style>
                 body {
-                    background-color: lightblue;
-                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background: rgb(2, 0, 36);
+                    background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(3, 3, 11, 1) 35%, rgba(0, 212, 255, 1) 100%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    font-family: 'Arial', sans-serif;
+                    color: white;
                 }
-                h1 {
-                    color: darkblue;
+
+                .loader {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                .dot-loading {
+                    display: flex;
+                    align-items: center;
+                }
+                h1{
+                    margin-right: 3px;
+                }
+
+                .dot-loading span {
+                    height: 8px;
+                    width: 8px;
+                    margin: 7px 5px 0 0;
+                    border-radius: 50%;
+                    background-color: white;
+                    animation: loading 1s linear infinite;
+                }
+
+                @keyframes loading {
+                    0% {
+                        transform: translateY(0);
+                    }
+                    25% {
+                        transform: translateY(2px);
+                    }
+                    50% {
+                        transform: translateY(-2px);
+                    }
+                    100% {
+                        transform: translateY(0);
+                    }
+                }
+
+                span:nth-child(1) {
+                    animation-delay: 0.4s;
+                }
+                span:nth-child(2) {
+                    animation-delay: 0.6s;
+                }
+                span:nth-child(3) {
+                    animation-delay: 0.8s;
                 }
             </style>
         </head>
         <body>
-            <h1>This link is working now!</h1>
+            <div class="loader">
+                <h1>The link is working</h1>
+                <div class="dot-loading">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>  
         </body>
-    </html>'''
+    </html>
+    '''
+
+
+
 
 @app.route('/<filename>')
 def serve_files(filename):
