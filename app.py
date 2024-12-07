@@ -14,7 +14,22 @@ port = os.getenv('PORT',3000)
 
 @app.route('/')
 def index():
-    return 'This link is working now !'
+    return '''    <html>
+        <head>
+            <style>
+                body {
+                    background-color: lightblue;
+                    font-family: Arial, sans-serif;
+                }
+                h1 {
+                    color: darkblue;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>This link is working now!</h1>
+        </body>
+    </html>'''
 
 @app.route('/<filename>')
 def serve_files(filename):
