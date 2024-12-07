@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
  
 # get port form env
-port = os.getenv('PORT')
+port = os.getenv('PORT',3000)
 
 @app.route('/')
 def index():
