@@ -86,7 +86,7 @@ def index():
         </head>
         <body>
             <div class="loader">
-                <h1>The link is working</h1>
+                <h1>Server is running</h1>
                 <div class="dot-loading">
                     <span></span>
                     <span></span>
