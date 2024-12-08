@@ -16,4 +16,6 @@ EXPOSE 3000
 
 # cmd to run app
 # CMD ["python", "app.py"]
+
+# running a python web app with Gunicorn in a production environment
 CMD ["gunicorn", "app:app"]
