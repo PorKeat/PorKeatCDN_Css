@@ -1,19 +1,19 @@
-# Use the official Python 3.12 image
+# official python 3.12 image
 FROM python:3.12-slim
 
-# Set the working directory in the container
+# set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container
-COPY . .
-
-# Install dependencies first
+# install dependencies first before copy contents
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port your app will run on
+# copy current directory contents to the container
+COPY . .
+
+# port that will be run
 EXPOSE 3000
 
-# Command to run the application
+# cmd to run app
 # CMD ["python", "app.py"]
 CMD ["gunicorn", "app:app"]
